@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export BIBFILES="$(fd --follow '\.bib$')"
+export BIBFILES="$(fd --follow --no-ignore -e bib)"
 if ! test "$BIBFILES"; then
     echo "No biblatex files" >&2
     exit 1
