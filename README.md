@@ -12,6 +12,11 @@ interpreted as a single initial query. If only one citekey matches this
 query, interactive selection will be skipped and the matching citekey
 will be output directly.
 
+**Note:** This branch contains a slightly extended version of the
+original `cite`-command that includes functionality for handling
+[jotter](https://github.com/seifferth/jotter) citekeys. If invoked
+outside a `jotter`, cite will exhibit the original behaviour.
+
 ## Installation
 
 Simply save `cite` in some directory included in your `PATH`, mark it

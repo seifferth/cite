@@ -1,5 +1,16 @@
 #!/bin/sh
 
+if test "$(which jotter-status)" && jotter-status -q; then
+    jotter-bib --list-all | sort -u |                     # Get citekeys
+        fzf -m -q "$(echo $@)" -1 \
+            --inline-info --preview-window=up \
+            --tabstop=4 --preview='jotter-bib --no-deps {}' |
+        sed "s/^/@/g" | sed "s/$/;/g" |         # Add separators
+        tr "\n" " " |                           # Join lines
+        rev | cut -c3- | rev                    # Trim last separator
+    exit 0
+fi
+
 export BIBFILES="$(fd --follow --no-ignore -e bib)"
 if ! test "$BIBFILES"; then
     echo "No biblatex files" >&2
