@@ -12,10 +12,14 @@ interpreted as a single initial query. If only one citekey matches this
 query, interactive selection will be skipped and the matching citekey
 will be output directly.
 
-**Note:** This branch contains a slightly extended version of the
-original `cite`-command that includes functionality for handling
-[jotter](https://github.com/seifferth/jotter) citekeys. If invoked
-outside a `jotter`, cite will exhibit the original behaviour.
+**Note:** This branch is deprecated. It includes functionality for
+handling a deprecated kind of [jotter] citekeys. Since I changed jotter
+quite a bit since, it won't work with the current version anymore. If
+you want to use `cite` with `jotter`, the best way is to just use plain
+`cite` from master and make sure to regularly run something like `jotter
+bib >references.bib`.
+
+[jotter]: https://github.com/seifferth/jotter
 
 ## Installation
 
