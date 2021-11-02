@@ -8,7 +8,7 @@ fi
 
 cat $BIBFILES | grep '^@' |
     sed 's,^[^{]*{,,g' | sed 's/, *$//g' | sort -u |  # Get citekeys
-    fzf -m -q "$(echo $@)" -1 \
+    fzf -e -m -q "$(echo $@)" -1 \
         --inline-info --preview-window=up \
         --tabstop=4 --preview='CITEKEY={}
         PATTERN="@.*{$CITEKEY, *"
