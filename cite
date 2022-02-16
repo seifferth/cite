@@ -1,6 +1,12 @@
 #!/bin/sh
 
-export BIBFILES="$(fd --follow --no-ignore -e bib)"
+BIBFILES=""; CURDIR=.; while true; do
+    NEWFILES="$(find $CURDIR -maxdepth 1 -name '*.bib'|sed 's,^\./,,')"
+    test "$NEWFILES" && BIBFILES="$BIBFILES $NEWFILES"
+    test "$(realpath $CURDIR)" = / && break
+    if test $CURDIR = .; then CURDIR=..; else CURDIR=../$CURDIR; fi
+done; export BIBFILES
+
 if ! test "$BIBFILES"; then
     echo "No biblatex files" >&2
     exit 1
