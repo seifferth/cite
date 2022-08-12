@@ -12,8 +12,7 @@ if ! test "$BIBFILES"; then
     exit 1
 fi
 
-cat $BIBFILES | grep '^@' |
-    sed 's,^[^{]*{,,g' | sed 's/, *$//g' | sort -u |  # Get citekeys
+grep '^@' $BIBFILES | awk -F '[@{,]' '{print $3}' | sort -u |   # Get citekeys
     fzf -e -m -q "$(echo $@)" -1 \
         --inline-info --preview-window=up \
         --tabstop=4 --preview='CITEKEY={}
